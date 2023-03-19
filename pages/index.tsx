@@ -1,7 +1,11 @@
+import Hero from "@/components/home-page/hero";
+
 export default function Home() {
   return (
     <>
-      <h1>BLOG</h1>
+      {/*  HERO SECTION*/}
+      <Hero />
+      {/*  FEATURED SECTION*/}
     </>
   );
 }
