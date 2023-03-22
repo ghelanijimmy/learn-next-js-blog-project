@@ -1,6 +1,16 @@
 import AllPosts from "@/pages/posts/all-posts";
-import { DUMMY_POSTS } from "@/mock/DUMMY_POSTS";
+import { getAllPosts } from "@/lib/posts-util";
+import { Post } from "@/components/posts/posts-grid";
 
-export default function Posts() {
-  return <AllPosts posts={DUMMY_POSTS} />;
+export default function Posts(props: { posts: Post[] }) {
+  return <AllPosts posts={props.posts} />;
+}
+
+export async function getStaticProps() {
+  const posts = getAllPosts();
+  return {
+    props: {
+      posts,
+    },
+  };
 }

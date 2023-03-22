@@ -7,6 +7,7 @@ export interface Post {
   excerpt: string;
   date: string;
   slug: string;
+  content: string;
 }
 type Posts = Post[];
 export default function PostsGrid(props: { posts: Posts }) {
