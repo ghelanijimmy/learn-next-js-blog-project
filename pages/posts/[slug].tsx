@@ -2,12 +2,17 @@ import PostContent from "@/pages/posts/post-detail/post-content";
 import { getPostData, getPostsFiles } from "@/lib/posts-util";
 import { GetStaticPropsContext } from "next";
 import { Post } from "@/components/posts/posts-grid";
+import Head from "next/head";
 
 export default function SinglePost(props: { postData: Post }) {
   return (
-    (props.postData && <PostContent postData={props.postData} />) || (
-      <p>Loading...</p>
-    )
+    <>
+      <Head>
+        <title>{props.postData.title}</title>
+        <meta name="description" content={props.postData.excerpt} />
+      </Head>
+      <PostContent postData={props.postData} />
+    </>
   );
 }
 
