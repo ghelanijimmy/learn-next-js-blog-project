@@ -1,4 +1,4 @@
-import AllPosts from "@/pages/posts/all-posts";
+import AllPosts from "@/components/home-page/all-posts";
 import { getAllPosts } from "@/lib/posts-util";
 import { Post } from "@/components/posts/posts-grid";
 import Head from "next/head";

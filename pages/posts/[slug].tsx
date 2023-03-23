@@ -1,18 +1,21 @@
-import PostContent from "@/pages/posts/post-detail/post-content";
+import PostContent from "@/components/posts/post-content";
 import { getPostData, getPostsFiles } from "@/lib/posts-util";
-import { GetStaticPropsContext } from "next";
-import { Post } from "@/components/posts/posts-grid";
+import { GetStaticPropsContext, InferGetStaticPropsType } from "next";
 import Head from "next/head";
 
-export default function SinglePost(props: { postData: Post }) {
+export default function SinglePost(
+  props: InferGetStaticPropsType<typeof getStaticProps>
+) {
   return (
-    <>
-      <Head>
-        <title>{props.postData.title}</title>
-        <meta name="description" content={props.postData.excerpt} />
-      </Head>
-      <PostContent postData={props.postData} />
-    </>
+    props.postData?.slug && (
+      <>
+        <Head>
+          <title>{props.postData.title}</title>
+          <meta name="description" content={props.postData.excerpt} />
+        </Head>
+        <PostContent postData={props.postData} />
+      </>
+    )
   );
 }
 

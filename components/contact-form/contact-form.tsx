@@ -62,8 +62,7 @@ export default function ContactForm() {
 
       try {
         setRequestStatus(RequestStatus.Pending);
-        const data = await makeRequest();
-        console.log(data);
+        await makeRequest();
       } catch (err) {
         if (err instanceof Error) {
           setRequestError(err.message);

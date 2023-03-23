@@ -1,10 +1,13 @@
-import PostHeader from "@/pages/posts/post-detail/post-header";
+import PostHeader from "@/components/post-detail/post-header";
 import classes from "./post-content.module.css";
 import ReactMarkdown, { Components } from "react-markdown";
 import { Post } from "@/components/posts/posts-grid";
 import Image from "next/image";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { atomDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter";
+import js from "react-syntax-highlighter/dist/cjs/languages/prism/javascript";
+import atomDark from "react-syntax-highlighter/dist/cjs/styles/prism/atom-dark";
+
+SyntaxHighlighter.registerLanguage("jsx", js);
 
 export default function PostContent(props: { postData: Post }) {
   const imagePath = `/images/posts/${props.postData.slug}/${props.postData.image}`;
@@ -32,7 +35,6 @@ export default function PostContent(props: { postData: Post }) {
     code(code) {
       const { children, className } = code;
       const lang = className?.split("-")[1];
-      console.log(code);
       return (
         <SyntaxHighlighter language={lang} style={atomDark}>
           {children as string | string[]}
